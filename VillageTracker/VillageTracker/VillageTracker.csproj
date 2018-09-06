@@ -46,11 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorManager.cs" />
     <Compile Include="Components\NpcList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\NpcList.Designer.cs">
       <DependentUpon>NpcList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NpcStatCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\NpcStatCard.Designer.cs">
+      <DependentUpon>NpcStatCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NpcStats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\NpcStats.Designer.cs">
+      <DependentUpon>NpcStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NpcTitleCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\NpcTitleCard.Designer.cs">
+      <DependentUpon>NpcTitleCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\VillageTitleUserControl.cs">
       <SubType>UserControl</SubType>
@@ -72,8 +91,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThemeManager.cs" />
     <EmbeddedResource Include="Components\NpcList.resx">
       <DependentUpon>NpcList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\NpcStatCard.resx">
+      <DependentUpon>NpcStatCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\NpcStats.resx">
+      <DependentUpon>NpcStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\NpcTitleCard.resx">
+      <DependentUpon>NpcTitleCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\VillageTitleUserControl.resx">
       <DependentUpon>VillageTitleUserControl.cs</DependentUpon>
