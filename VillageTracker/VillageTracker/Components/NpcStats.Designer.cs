@@ -31,6 +31,7 @@
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.npcTitleCard = new VillageTracker.Components.NpcTitleCard();
             this.npcStatCard1 = new VillageTracker.Components.NpcStatCard();
+            this.npcInfoCard = new VillageTracker.Components.NpcInfoCard();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.Controls.Add(this.npcTitleCard, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.npcStatCard1, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.npcInfoCard, 0, 2);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
@@ -63,11 +65,28 @@
             // 
             // npcStatCard1
             // 
+            this.npcStatCard1.ArmorClass = "10 (cloths)";
             this.npcStatCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(220)))));
+            this.npcStatCard1.Cha = "10 (+0)";
+            this.npcStatCard1.Con = "10 (+0)";
+            this.npcStatCard1.Dex = "10 (+0)";
+            this.npcStatCard1.HitPoints = "17";
+            this.npcStatCard1.Int = "10 (+0)";
             this.npcStatCard1.Location = new System.Drawing.Point(3, 78);
             this.npcStatCard1.Name = "npcStatCard1";
             this.npcStatCard1.Size = new System.Drawing.Size(400, 119);
+            this.npcStatCard1.Speed = "30 ft.";
+            this.npcStatCard1.Str = "10 (+0)";
             this.npcStatCard1.TabIndex = 1;
+            this.npcStatCard1.Wis = "10 (+0)";
+            // 
+            // npcInfoCard
+            // 
+            this.npcInfoCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(220)))));
+            this.npcInfoCard.Location = new System.Drawing.Point(3, 203);
+            this.npcInfoCard.Name = "npcInfoCard";
+            this.npcInfoCard.Size = new System.Drawing.Size(399, 354);
+            this.npcInfoCard.TabIndex = 2;
             // 
             // NpcStats
             // 
@@ -86,5 +105,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private NpcTitleCard npcTitleCard;
         private NpcStatCard npcStatCard1;
+        private NpcInfoCard npcInfoCard;
     }
 }

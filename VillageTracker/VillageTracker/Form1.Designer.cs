@@ -28,27 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.villageTitleUserControl1 = new VillageTracker.Components.VillageTitleUserControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.villageUserControl1 = new VillageTracker.Components.VillageUserControl();
+            this.villageTitleUserControl1 = new VillageTracker.Components.VillageTitleUserControl();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // villageTitleUserControl1
-            // 
-            this.villageTitleUserControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.villageTitleUserControl1.BackColor = System.Drawing.Color.White;
-            this.villageTitleUserControl1.Location = new System.Drawing.Point(1, 26);
-            this.villageTitleUserControl1.Name = "villageTitleUserControl1";
-            this.villageTitleUserControl1.Size = new System.Drawing.Size(1008, 88);
-            this.villageTitleUserControl1.TabIndex = 0;
-            this.villageTitleUserControl1.VillageBanner = null;
-            this.villageTitleUserControl1.VillageTitle = "Village Title";
             // 
             // menuStrip1
             // 
@@ -69,6 +59,9 @@
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Controls.Add(this.tabPage2);
             this.tabControlMain.Location = new System.Drawing.Point(2, 98);
@@ -79,6 +72,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.villageUserControl1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -92,10 +86,30 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.Size = new System.Drawing.Size(999, 418);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // villageUserControl1
+            // 
+            this.villageUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.villageUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.villageUserControl1.Name = "villageUserControl1";
+            this.villageUserControl1.Size = new System.Drawing.Size(993, 412);
+            this.villageUserControl1.TabIndex = 0;
+            // 
+            // villageTitleUserControl1
+            // 
+            this.villageTitleUserControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.villageTitleUserControl1.BackColor = System.Drawing.Color.White;
+            this.villageTitleUserControl1.Location = new System.Drawing.Point(1, 26);
+            this.villageTitleUserControl1.Name = "villageTitleUserControl1";
+            this.villageTitleUserControl1.Size = new System.Drawing.Size(1008, 88);
+            this.villageTitleUserControl1.TabIndex = 0;
+            this.villageTitleUserControl1.VillageBanner = null;
+            this.villageTitleUserControl1.VillageTitle = "Village Title";
             // 
             // Form1
             // 
@@ -111,6 +125,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +139,7 @@
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private Components.VillageUserControl villageUserControl1;
     }
 }
 
