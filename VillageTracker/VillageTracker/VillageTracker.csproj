@@ -89,6 +89,14 @@
     <Compile Include="Components\VillageUserControl.Designer.cs">
       <DependentUpon>VillageUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Enums.cs" />
+    <Compile Include="Data\NpcData.cs" />
+    <Compile Include="Dialogs\AddNpcDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AddNpcDialog.Designer.cs">
+      <DependentUpon>AddNpcDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +127,9 @@
     <EmbeddedResource Include="Components\VillageUserControl.resx">
       <DependentUpon>VillageUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AddNpcDialog.resx">
+      <DependentUpon>AddNpcDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DefaultNpcImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="npcInfoCard.DescriptionText" xml:space="preserve">
-    <value>A wondering man that fills the role that is currently needed by the campaign, A wondering man that fills the role that is currently needed by the campaign, A wondering man that fills the role that is currently needed by the campaign, A wondering man that fills the role that is currently needed by the campaign</value>
-  </data>
-  <data name="npcInfoCard.MotivationsText" xml:space="preserve">
-    <value>To matter to the party so he exists, To matter to the party so he exists, ,To matter to the party so he exists, To matter to the party so he exists, To matter to the party so he exists, To matter to the party so he exists,To matter to the party so he exists</value>
-  </data>
 </root>

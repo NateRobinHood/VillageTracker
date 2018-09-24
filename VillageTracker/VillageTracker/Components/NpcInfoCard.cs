@@ -97,7 +97,14 @@ namespace VillageTracker.Components
 
             //Determine rich text box height from line count
             int lineCount = thisTextBox.GetLineFromCharIndex(thisTextBox.TextLength) + 1;
-            thisTextBox.Height = lineCount * 25;
+            thisTextBox.Height = lineCount * 18;
+        }
+
+        private void SetTextHeight(RichTextBox thisTextBox)
+        {
+            //Determine rich text box height from line count
+            int lineCount = thisTextBox.GetLineFromCharIndex(thisTextBox.TextLength) + 1;
+            thisTextBox.Height = lineCount * 18;
         }
 
         //Public Properties
@@ -203,6 +210,19 @@ namespace VillageTracker.Components
                 m_DescriptionText = value;
                 SetText(rtbDescription, value);
             }
+        }
+
+        //Event Handlers
+        private void NpcInfoCard_Resize(object sender, EventArgs e)
+        {
+            SetTextHeight(rtbAppearance);
+            SetTextHeight(rtbBackground);
+            SetTextHeight(rtbMotivations);
+            SetTextHeight(rtbAlignment);
+            SetTextHeight(rtbProfession);
+            SetTextHeight(rtbStrongestSkills);
+            SetTextHeight(rtbWeakestSkills);
+            SetTextHeight(rtbDescription);
         }
     }
 }

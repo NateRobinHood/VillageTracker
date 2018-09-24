@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NpcStats));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.npcTitleCard = new VillageTracker.Components.NpcTitleCard();
             this.npcStatCard1 = new VillageTracker.Components.NpcStatCard();
@@ -49,7 +50,7 @@
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(406, 560);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(406, 584);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // npcTitleCard
@@ -82,11 +83,20 @@
             // 
             // npcInfoCard
             // 
+            this.npcInfoCard.AlignmentText = "Lawful Good";
+            this.npcInfoCard.AppearanceText = "Black hair and stern face";
             this.npcInfoCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(220)))));
+            this.npcInfoCard.BackgroundText = "The son of a npc";
+            this.npcInfoCard.DescriptionText = resources.GetString("npcInfoCard.DescriptionText");
+            this.npcInfoCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.npcInfoCard.Location = new System.Drawing.Point(3, 203);
+            this.npcInfoCard.MotivationsText = resources.GetString("npcInfoCard.MotivationsText");
             this.npcInfoCard.Name = "npcInfoCard";
-            this.npcInfoCard.Size = new System.Drawing.Size(399, 354);
+            this.npcInfoCard.ProfessionText = "Whatever is needed at the moment";
+            this.npcInfoCard.Size = new System.Drawing.Size(400, 378);
+            this.npcInfoCard.StrongestSkillsText = "Strenght";
             this.npcInfoCard.TabIndex = 2;
+            this.npcInfoCard.WeakestSkillsText = "Constitution";
             // 
             // NpcStats
             // 
@@ -94,7 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "NpcStats";
-            this.Size = new System.Drawing.Size(406, 560);
+            this.Size = new System.Drawing.Size(406, 584);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.ResumeLayout(false);
 

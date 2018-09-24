@@ -49,6 +49,7 @@
             // 
             // scMain.Panel2
             // 
+            this.scMain.Panel2.AutoScroll = true;
             this.scMain.Panel2.Controls.Add(this.npcStats1);
             this.scMain.Size = new System.Drawing.Size(1009, 577);
             this.scMain.SplitterDistance = 336;
