@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,6 +27,8 @@ namespace VillageTracker.Data
         private string m_StrongestSkills = string.Empty;
         private string m_WeakestSkills = string.Empty;
         private string m_Description = string.Empty;
+        private string m_NpcImagePath = string.Empty;
+        private Image m_NpcImage = null;
 
         //Public Events
         public event PropertyChangedEventHandler PropertyChanged;
@@ -257,6 +261,47 @@ namespace VillageTracker.Data
                     m_Description = value;
                     NotifyPropertyChanged();
                 }
+            }
+        }
+
+        public string NpcImagePath
+        {
+            get
+            {
+                return m_NpcImagePath;
+            }
+            set
+            {
+                if (m_NpcImagePath != value)
+                {
+                    m_NpcImagePath = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool HasNpcImage
+        {
+            get
+            {
+                return File.Exists(m_NpcImagePath);
+            }
+        }
+
+        public Image NpcImage
+        {
+            get
+            {
+                if (HasNpcImage)
+                {
+                    if (m_NpcImage == null)
+                    {
+                        m_NpcImage = Image.FromFile(m_NpcImagePath);
+                    }
+
+                    return m_NpcImage;
+                }
+                return null;
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -108,14 +109,42 @@ namespace VillageTracker.Data
 
     public enum NpcAlignments
     {
+        [Description("Lawful Good")]
         LawfulGood = 0,
+        [Description("Lawful Neutral")]
         LawfulNeutral,
+        [Description("Lawful Evil")]
         LawfulEvil,
+        [Description("Neutral Good")]
         NeutralGood,
+        [Description("Neutral Neutral")]
         NeutralNeutral,
+        [Description("Neutral Evil")]
         NeutralEvil,
+        [Description("Chaotic Good")]
         ChaoticGood,
+        [Description("Chaotic Neutral")]
         ChaoticNeutral,
+        [Description("Chaotic Evil")]
         ChaoticEvil
+    }
+
+    public static class EnumExtensions
+    {
+        public static string GetEnumDescription(this Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes =
+                (DescriptionAttribute[])fi.GetCustomAttributes(
+                typeof(DescriptionAttribute),
+                false);
+
+            if (attributes != null &&
+                attributes.Length > 0)
+                return attributes[0].Description;
+            else
+                return value.ToString();
+        }
     }
 }
