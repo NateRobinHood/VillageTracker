@@ -455,6 +455,7 @@
             this.cmdSave.TabIndex = 10;
             this.cmdSave.Text = "Save";
             this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdCancel
             // 
@@ -464,6 +465,7 @@
             this.cmdCancel.TabIndex = 11;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // AddNpcDialog
             // 

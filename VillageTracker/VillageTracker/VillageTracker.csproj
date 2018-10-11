@@ -90,7 +90,15 @@
       <DependentUpon>VillageUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Enums.cs" />
+    <Compile Include="Data\LocationData.cs" />
     <Compile Include="Data\NpcData.cs" />
+    <Compile Include="Data\ProjectData.cs" />
+    <Compile Include="Dialogs\AddLocationDilaog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AddLocationDilaog.Designer.cs">
+      <DependentUpon>AddLocationDilaog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\AddNpcDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\VillageUserControl.resx">
       <DependentUpon>VillageUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AddLocationDilaog.resx">
+      <DependentUpon>AddLocationDilaog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\AddNpcDialog.resx">
       <DependentUpon>AddNpcDialog.cs</DependentUpon>

@@ -30,11 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.villageUserControl1 = new VillageTracker.Components.VillageUserControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.villageTitleUserControl1 = new VillageTracker.Components.VillageTitleUserControl();
+            this.addNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -53,9 +55,19 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addLocationToolStripMenuItem,
+            this.addNPCToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // addLocationToolStripMenuItem
+            // 
+            this.addLocationToolStripMenuItem.Name = "addLocationToolStripMenuItem";
+            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addLocationToolStripMenuItem.Text = "Add Location";
+            this.addLocationToolStripMenuItem.Click += new System.EventHandler(this.addLocationToolStripMenuItem_Click);
             // 
             // tabControlMain
             // 
@@ -81,6 +93,14 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // villageUserControl1
+            // 
+            this.villageUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.villageUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.villageUserControl1.Name = "villageUserControl1";
+            this.villageUserControl1.Size = new System.Drawing.Size(993, 412);
+            this.villageUserControl1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -90,14 +110,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // villageUserControl1
-            // 
-            this.villageUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.villageUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.villageUserControl1.Name = "villageUserControl1";
-            this.villageUserControl1.Size = new System.Drawing.Size(993, 412);
-            this.villageUserControl1.TabIndex = 0;
             // 
             // villageTitleUserControl1
             // 
@@ -110,6 +122,13 @@
             this.villageTitleUserControl1.TabIndex = 0;
             this.villageTitleUserControl1.VillageBanner = null;
             this.villageTitleUserControl1.VillageTitle = "Village Title";
+            // 
+            // addNPCToolStripMenuItem
+            // 
+            this.addNPCToolStripMenuItem.Name = "addNPCToolStripMenuItem";
+            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addNPCToolStripMenuItem.Text = "Add NPC";
+            this.addNPCToolStripMenuItem.Click += new System.EventHandler(this.addNPCToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -140,6 +159,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private Components.VillageUserControl villageUserControl1;
+        private System.Windows.Forms.ToolStripMenuItem addLocationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNPCToolStripMenuItem;
     }
 }
 

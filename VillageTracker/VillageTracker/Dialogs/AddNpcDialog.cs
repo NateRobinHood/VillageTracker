@@ -56,6 +56,14 @@ namespace VillageTracker.Dialogs
             }));
         }
 
+        public NpcData NewNpcData
+        {
+            get
+            {
+                return m_NewNpcData;
+            }
+        }
+
         //Event Handlers
         private void pictureBoxNpcImage_Click(object sender, EventArgs e)
         {
@@ -145,6 +153,16 @@ namespace VillageTracker.Dialogs
         private void cbAlignment_SelectedIndexChanged(object sender, EventArgs e)
         {
             m_NewNpcData.Alignemnt = (NpcAlignments)cbAlignment.SelectedValue;
+        }
+
+        private void cmdSave_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
 
         //Internal Classes
