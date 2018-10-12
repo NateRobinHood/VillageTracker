@@ -48,7 +48,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblVillageTitle);
             this.Name = "VillageTitleUserControl";
-            this.Size = new System.Drawing.Size(754, 118);
+            this.Size = new System.Drawing.Size(750, 120);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -31,12 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.villageUserControl1 = new VillageTracker.Components.VillageUserControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.villageTitleUserControl1 = new VillageTracker.Components.VillageTitleUserControl();
-            this.addNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.villageTitleUserControl = new VillageTracker.Components.VillageTitleUserControl();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -65,9 +65,16 @@
             // addLocationToolStripMenuItem
             // 
             this.addLocationToolStripMenuItem.Name = "addLocationToolStripMenuItem";
-            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addLocationToolStripMenuItem.Text = "Add Location";
             this.addLocationToolStripMenuItem.Click += new System.EventHandler(this.addLocationToolStripMenuItem_Click);
+            // 
+            // addNPCToolStripMenuItem
+            // 
+            this.addNPCToolStripMenuItem.Name = "addNPCToolStripMenuItem";
+            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addNPCToolStripMenuItem.Text = "Add NPC";
+            this.addNPCToolStripMenuItem.Click += new System.EventHandler(this.addNPCToolStripMenuItem_Click);
             // 
             // tabControlMain
             // 
@@ -111,24 +118,17 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // villageTitleUserControl1
+            // villageTitleUserControl
             // 
-            this.villageTitleUserControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.villageTitleUserControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.villageTitleUserControl1.BackColor = System.Drawing.Color.White;
-            this.villageTitleUserControl1.Location = new System.Drawing.Point(1, 26);
-            this.villageTitleUserControl1.Name = "villageTitleUserControl1";
-            this.villageTitleUserControl1.Size = new System.Drawing.Size(1008, 88);
-            this.villageTitleUserControl1.TabIndex = 0;
-            this.villageTitleUserControl1.VillageBanner = null;
-            this.villageTitleUserControl1.VillageTitle = "Village Title";
-            // 
-            // addNPCToolStripMenuItem
-            // 
-            this.addNPCToolStripMenuItem.Name = "addNPCToolStripMenuItem";
-            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addNPCToolStripMenuItem.Text = "Add NPC";
-            this.addNPCToolStripMenuItem.Click += new System.EventHandler(this.addNPCToolStripMenuItem_Click);
+            this.villageTitleUserControl.BackColor = System.Drawing.Color.White;
+            this.villageTitleUserControl.Location = new System.Drawing.Point(1, 26);
+            this.villageTitleUserControl.Name = "villageTitleUserControl";
+            this.villageTitleUserControl.Size = new System.Drawing.Size(1008, 88);
+            this.villageTitleUserControl.TabIndex = 0;
+            this.villageTitleUserControl.VillageBanner = null;
+            this.villageTitleUserControl.VillageTitle = "Village Title";
             // 
             // Form1
             // 
@@ -136,7 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 544);
             this.Controls.Add(this.tabControlMain);
-            this.Controls.Add(this.villageTitleUserControl1);
+            this.Controls.Add(this.villageTitleUserControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -152,7 +152,7 @@
 
         #endregion
 
-        private Components.VillageTitleUserControl villageTitleUserControl1;
+        private Components.VillageTitleUserControl villageTitleUserControl;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControlMain;

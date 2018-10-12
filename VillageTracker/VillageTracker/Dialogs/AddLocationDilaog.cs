@@ -51,5 +51,16 @@ namespace VillageTracker.Dialogs
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void cmdImportBanner_Click(object sender, EventArgs e)
+        {
+            using (ImportVillageBannerDialog IVBD = new ImportVillageBannerDialog())
+            {
+                if (IVBD.ShowDialog() == DialogResult.OK)
+                {
+                    m_NewLocationData.BannerImage = IVBD.BannerImage;
+                }
+            }
+        }
     }
 }

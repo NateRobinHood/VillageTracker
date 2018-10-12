@@ -33,6 +33,7 @@
             this.lblLocationName = new System.Windows.Forms.Label();
             this.cmdSave = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdImportBanner = new System.Windows.Forms.Button();
             this.groupBoxDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,6 @@
             // 
             this.txtLocationName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLocationName.Enabled = false;
             this.txtLocationName.Location = new System.Drawing.Point(56, 16);
             this.txtLocationName.Name = "txtLocationName";
             this.txtLocationName.Size = new System.Drawing.Size(255, 20);
@@ -89,11 +89,22 @@
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
+            // cmdImportBanner
+            // 
+            this.cmdImportBanner.Location = new System.Drawing.Point(12, 93);
+            this.cmdImportBanner.Name = "cmdImportBanner";
+            this.cmdImportBanner.Size = new System.Drawing.Size(84, 23);
+            this.cmdImportBanner.TabIndex = 3;
+            this.cmdImportBanner.Text = "Banner Image";
+            this.cmdImportBanner.UseVisualStyleBackColor = true;
+            this.cmdImportBanner.Click += new System.EventHandler(this.cmdImportBanner_Click);
+            // 
             // AddLocationDilaog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 128);
+            this.Controls.Add(this.cmdImportBanner);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.groupBoxDetails);
@@ -112,5 +123,6 @@
         private System.Windows.Forms.Label lblLocationName;
         private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Button cmdImportBanner;
     }
 }
