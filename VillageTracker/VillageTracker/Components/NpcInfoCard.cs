@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VillageTracker.Data;
 
 namespace VillageTracker.Components
 {
@@ -210,6 +211,19 @@ namespace VillageTracker.Components
                 m_DescriptionText = value;
                 SetText(rtbDescription, value);
             }
+        }
+
+        //Public Methods
+        public void SetNpcData(NpcData npcData)
+        {
+            AppearanceText = npcData.Appearance;
+            BackgroundText = npcData.Background;
+            MotivationsText = npcData.Mostivations;
+            AlignmentText = npcData.Alignemnt.GetEnumDescription();
+            ProfessionText = npcData.Profession;
+            StrongestSkillsText = npcData.StrongestSkills;
+            WeakestSkillsText = npcData.WeakestSkills;
+            DescriptionText = npcData.Description;
         }
 
         //Event Handlers

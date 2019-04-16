@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VillageTracker.Data;
 
 namespace VillageTracker.Components
 {
@@ -52,6 +53,13 @@ namespace VillageTracker.Components
             {
                 lblInfo.Text = value;
             }
+        }
+
+        //Public Methods
+        public void SetNpcData(NpcData npcData)
+        {
+            NpcName = npcData.Name;
+            NpcInfo = npcData.NpcInfo;
         }
     }
 }

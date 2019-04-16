@@ -338,6 +338,15 @@ namespace VillageTracker.Data
             }
         }
 
+        [XmlIgnore]
+        public string NpcInfo
+        {
+            get
+            {
+                return $"Medium Humanoid ({Race.GetEnumDescription()}), {Alignemnt.GetEnumDescription()}";
+            }
+        }
+
         //Public Methods
         public bool SetNpcImage(string imagePath)
         {

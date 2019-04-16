@@ -30,7 +30,7 @@
         {
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.npcList = new VillageTracker.Components.NpcList();
-            this.npcStats1 = new VillageTracker.Components.NpcStats();
+            this.npcStats = new VillageTracker.Components.NpcStats();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -50,7 +50,7 @@
             // scMain.Panel2
             // 
             this.scMain.Panel2.AutoScroll = true;
-            this.scMain.Panel2.Controls.Add(this.npcStats1);
+            this.scMain.Panel2.Controls.Add(this.npcStats);
             this.scMain.Size = new System.Drawing.Size(1009, 577);
             this.scMain.SplitterDistance = 336;
             this.scMain.TabIndex = 0;
@@ -63,14 +63,14 @@
             this.npcList.Size = new System.Drawing.Size(336, 577);
             this.npcList.TabIndex = 0;
             // 
-            // npcStats1
+            // npcStats
             // 
-            this.npcStats1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(220)))));
-            this.npcStats1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.npcStats1.Location = new System.Drawing.Point(0, 0);
-            this.npcStats1.Name = "npcStats1";
-            this.npcStats1.Size = new System.Drawing.Size(669, 577);
-            this.npcStats1.TabIndex = 0;
+            this.npcStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(220)))));
+            this.npcStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.npcStats.Location = new System.Drawing.Point(0, 0);
+            this.npcStats.Name = "npcStats";
+            this.npcStats.Size = new System.Drawing.Size(669, 577);
+            this.npcStats.TabIndex = 0;
             // 
             // VillageUserControl
             // 
@@ -91,6 +91,6 @@
 
         private System.Windows.Forms.SplitContainer scMain;
         private NpcList npcList;
-        private NpcStats npcStats1;
+        private NpcStats npcStats;
     }
 }

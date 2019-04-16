@@ -67,4 +67,22 @@ namespace VillageTracker
             }
         }
     }
+
+    public class OnNpcSelectedArgs : EventArgs
+    {
+        private NpcData m_SelectedNpc;
+
+        public OnNpcSelectedArgs(NpcData selectedNpc)
+        {
+            m_SelectedNpc = selectedNpc;
+        }
+
+        public NpcData SelectedNpc
+        {
+            get
+            {
+                return m_SelectedNpc;
+            }
+        }
+    }
 }
