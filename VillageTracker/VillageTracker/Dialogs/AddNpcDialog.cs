@@ -29,31 +29,31 @@ namespace VillageTracker.Dialogs
         {
             cbGender.DisplayMember = "GenderDescription";
             cbGender.ValueMember = "Gender";
-            cbGender.Items.Add(Enum.GetValues(typeof(NpcGenders)).Cast<Enum>().Select(c =>
+            cbGender.Items.AddRange(Enum.GetValues(typeof(NpcGenders)).Cast<Enum>().Select(c =>
             {
                 NpcGenderItem ret = new NpcGenderItem();
                 ret.Gender = (NpcGenders)c;
                 ret.GenderDescription = c.GetEnumDescription();
                 return ret;
-            }));
+            }).ToArray());
             cbRace.DisplayMember = "RaceDescription";
             cbRace.ValueMember = "Race";
-            cbRace.Items.Add(Enum.GetValues(typeof(NpcRaces)).Cast<Enum>().Select(c =>
+            cbRace.Items.AddRange(Enum.GetValues(typeof(NpcRaces)).Cast<Enum>().Select(c =>
             {
                 NpcRaceItem ret = new NpcRaceItem();
                 ret.Race = (NpcRaces)c;
                 ret.RaceDescription = c.GetEnumDescription();
                 return ret;
-            }));
+            }).ToArray());
             cbAlignment.DisplayMember = "AlignmentDescription";
             cbAlignment.ValueMember = "Alignment";
-            cbAlignment.Items.Add(Enum.GetValues(typeof(NpcAlignments)).Cast<Enum>().Select(c =>
+            cbAlignment.Items.AddRange(Enum.GetValues(typeof(NpcAlignments)).Cast<Enum>().Select(c =>
             {
                 NpcAlignmentItem ret = new NpcAlignmentItem();
                 ret.Alignment = (NpcAlignments)c;
                 ret.AlignmentDescription = c.GetEnumDescription();
                 return ret;
-            }));
+            }).ToArray());
         }
 
         public NpcData NewNpcData
@@ -73,7 +73,7 @@ namespace VillageTracker.Dialogs
                 OFD.Multiselect = false;
                 if (OFD.ShowDialog() == DialogResult.OK)
                 {
-                    m_NewNpcData.NpcImagePath = OFD.FileName;
+                    m_NewNpcData.SetNpcImage(OFD.FileName);
                     if (m_NewNpcData.HasNpcImage)
                     {
                         pictureBoxNpcImage.Image = m_NewNpcData.NpcImage;
@@ -124,35 +124,56 @@ namespace VillageTracker.Dialogs
 
         private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_NewNpcData.Gender = (NpcGenders)cbGender.SelectedValue;
+            //m_NewNpcData.Gender = (NpcGenders)cbGender.SelectedValue;
 
-            if (m_NewNpcData.Gender == NpcGenders.Other)
+            //if (m_NewNpcData.Gender == NpcGenders.Other)
+            //{
+            //    txtGenderOther.Enabled = true;
+            //}
+            //else
+            //{
+            //    txtGenderOther.Enabled = false;
+            //}
+        }
+
+        private void cbGender_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbGender.SelectedItem != null && cbGender.SelectedItem is NpcGenderItem)
             {
-                txtGenderOther.Enabled = true;
-            }
-            else
-            {
-                txtGenderOther.Enabled = false;
+                m_NewNpcData.Gender = ((NpcGenderItem)cbGender.SelectedItem).Gender;
+
+                if (m_NewNpcData.Gender == NpcGenders.Other)
+                {
+                    txtGenderOther.Enabled = true;
+                }
+                else
+                {
+                    txtGenderOther.Enabled = false;
+                }
             }
         }
 
         private void cbRace_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_NewNpcData.Race = (NpcRaces)cbRace.SelectedValue;
+            if (cbRace.SelectedItem != null && cbRace.SelectedItem is NpcRaceItem)
+            {
+                m_NewNpcData.Race = ((NpcRaceItem)cbRace.SelectedItem).Race;
 
-            if (m_NewNpcData.Race == NpcRaces.Other)
-            {
-                txtRaceOther.Enabled = true;
-            }
-            else
-            {
-                txtRaceOther.Enabled = false;
+                if (m_NewNpcData.Race == NpcRaces.Other)
+                {
+                    txtRaceOther.Enabled = true;
+                }
+                else
+                {
+                    txtRaceOther.Enabled = false;
+                }
             }
         }
 
         private void cbAlignment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_NewNpcData.Alignemnt = (NpcAlignments)cbAlignment.SelectedValue;
+            if (cbAlignment.SelectedItem != null && cbAlignment.SelectedItem is NpcAlignmentItem)
+                m_NewNpcData.Alignemnt = ((NpcAlignmentItem)cbAlignment.SelectedItem).Alignment;
         }
 
         private void cmdSave_Click(object sender, EventArgs e)

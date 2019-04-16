@@ -37,6 +37,8 @@
             this.villageUserControl1 = new VillageTracker.Components.VillageUserControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.villageTitleUserControl = new VillageTracker.Components.VillageTitleUserControl();
+            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -57,7 +59,9 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addLocationToolStripMenuItem,
-            this.addNPCToolStripMenuItem});
+            this.addNPCToolStripMenuItem,
+            this.saveProjectToolStripMenuItem,
+            this.openProjectToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -65,14 +69,14 @@
             // addLocationToolStripMenuItem
             // 
             this.addLocationToolStripMenuItem.Name = "addLocationToolStripMenuItem";
-            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addLocationToolStripMenuItem.Text = "Add Location";
             this.addLocationToolStripMenuItem.Click += new System.EventHandler(this.addLocationToolStripMenuItem_Click);
             // 
             // addNPCToolStripMenuItem
             // 
             this.addNPCToolStripMenuItem.Name = "addNPCToolStripMenuItem";
-            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addNPCToolStripMenuItem.Text = "Add NPC";
             this.addNPCToolStripMenuItem.Click += new System.EventHandler(this.addNPCToolStripMenuItem_Click);
             // 
@@ -130,6 +134,20 @@
             this.villageTitleUserControl.VillageBanner = null;
             this.villageTitleUserControl.VillageTitle = "Village Title";
             // 
+            // saveProjectToolStripMenuItem
+            // 
+            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveProjectToolStripMenuItem.Text = "Save Project";
+            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            // 
+            // openProjectToolStripMenuItem
+            // 
+            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openProjectToolStripMenuItem.Text = "Open Project";
+            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +179,8 @@
         private Components.VillageUserControl villageUserControl1;
         private System.Windows.Forms.ToolStripMenuItem addLocationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNPCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
     }
 }
 

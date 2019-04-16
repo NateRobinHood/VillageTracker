@@ -102,6 +102,7 @@
             // 
             this.cbAlignment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAlignment.FormattingEnabled = true;
             this.cbAlignment.Location = new System.Drawing.Point(100, 175);
             this.cbAlignment.Name = "cbAlignment";
@@ -141,6 +142,7 @@
             // 
             this.cbRace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRace.FormattingEnabled = true;
             this.cbRace.Location = new System.Drawing.Point(100, 122);
             this.cbRace.Name = "cbRace";
@@ -180,12 +182,14 @@
             // 
             this.cbGender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Location = new System.Drawing.Point(100, 69);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(320, 21);
             this.cbGender.TabIndex = 5;
             this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            this.cbGender.SelectedValueChanged += new System.EventHandler(this.cbGender_SelectedValueChanged);
             // 
             // lblGender
             // 

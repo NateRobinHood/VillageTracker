@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace VillageTracker.Data
 {
@@ -10,11 +15,17 @@ namespace VillageTracker.Data
     {
         //Constants
         public static string AllNpcsTabName = "All Npcs";
+        private static string XML_ROOT = "village_tracker_project_data";
+        private static string XML_NPC_ELEMENT = "npc_data";
+        private static string XML_LOCATION_ELEMENT = "location_data";
 
         //Public Events
         public static event EventHandler<OnProjectChangedEventArgs> OnProjectDataChanged;
+        public static event EventHandler OnProjectLoaded;
 
         //Private Variables
+        private static string m_ProjectPath = string.Empty;
+        private static bool m_LoadingProject = false;
         private static NpcList m_Npcs;
         private static LocationList m_Locations;
 
@@ -51,30 +62,149 @@ namespace VillageTracker.Data
 
 
         //Public Methods
-        public static void SaveProjectData()
+        public static void SaveProjectData(string path = "")
         {
-            throw new NotImplementedException("To Do - Save Project Data");
+            string saveProjectFilePath = path;
+            if (saveProjectFilePath == string.Empty && m_ProjectPath != string.Empty)
+            {
+                saveProjectFilePath = m_ProjectPath;
+            }
+            else if(path == string.Empty && m_ProjectPath == string.Empty)
+            {
+                using (SaveFileDialog SFD = new SaveFileDialog())
+                {
+                    SFD.Filter = "vtp files (*.vtp) | *.vtp";
+                    SFD.RestoreDirectory = true;
+
+                    if (SFD.ShowDialog() == DialogResult.OK)
+                    {
+                        saveProjectFilePath = SFD.FileName;
+                    }
+                }
+            }
+
+            XElement rootElement = new XElement(XML_ROOT);
+            XElement npcData = new XElement(XML_NPC_ELEMENT);
+            XElement locationData = new XElement(XML_LOCATION_ELEMENT);
+
+            //Serialize Npc Data
+            XmlSerializer npcSerializer = new XmlSerializer(typeof(NpcList));
+            using (StringWriter sw = new StringWriter())
+            {
+                using (XmlWriter xw = XmlWriter.Create(sw))
+                {
+                    npcSerializer.Serialize(xw, m_Npcs);
+                    npcData.Add(XElement.Parse(xw.ToString()));
+                }
+            }
+
+            //Serialize Location Data
+            XmlSerializer locationSerializer = new XmlSerializer(typeof(LocationList));
+            using (StringWriter sw = new StringWriter())
+            {
+                using (XmlWriter xw = XmlWriter.Create(sw))
+                {
+                    locationSerializer.Serialize(xw, m_Locations);
+                    locationData.Add(XElement.Parse(xw.ToString()));
+                }
+            }
+
+            rootElement.Add(npcData);
+            rootElement.Add(locationData);
+            rootElement.Save(saveProjectFilePath);
+        }
+
+        public static void OpenProjectData(string path)
+        {
+            m_LoadingProject = true;
+            m_ProjectPath = path;
+
+            //Open Document
+            XDocument projectDataXml = XDocument.Load(path);
+
+            XElement rootElement = projectDataXml.Root;
+            if (rootElement != null && rootElement.Name.LocalName != XML_ROOT)
+            {
+                MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_LoadingProject = false;
+                return;
+            }
+
+            XElement npcData = rootElement.Element(XML_NPC_ELEMENT);
+            if (npcData != null)
+            {
+                MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_LoadingProject = false;
+                return;
+            }
+
+            XElement locationData = rootElement.Element(XML_LOCATION_ELEMENT);
+            if (npcData != null)
+            {
+                MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                m_LoadingProject = false;
+                return;
+            }
+
+            //Deserialize Npc Data
+            XmlSerializer npcDataSerializer = new XmlSerializer(typeof(NpcList));
+            using (TextReader reader = new StringReader(npcData.Elements().First().ToString()))
+            {
+                try
+                {
+                    m_Npcs = (NpcList)npcDataSerializer.Deserialize(reader);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"The file {path} is an invalid project file\n{ex.ToString()}", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    m_LoadingProject = false;
+                    return;
+                }
+            }
+
+            //Deserialize Location Data
+            XmlSerializer locationDataSerializer = new XmlSerializer(typeof(LocationList));
+            using (TextReader reader = new StringReader(locationData.Elements().First().ToString()))
+            {
+                try
+                { 
+                    m_Locations = (LocationList)npcDataSerializer.Deserialize(reader);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"The file {path} is an invalid project file\n{ex.ToString()}", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    m_LoadingProject = false;
+                    return;
+                }
+        }
+
+            m_LoadingProject = false;
+            OnProjectLoaded?.Invoke(null, new EventArgs());
         }
 
         //Event Handlers
         private static void Npcs_OnNpcRemoved(object sender, OnNpcAddedRemovedArgs e)
         {
-            OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Npc));
+            if (!m_LoadingProject)
+                OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Npc));
         }
 
         private static void Npcs_OnNpcAdded(object sender, OnNpcAddedRemovedArgs e)
         {
-            OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Npc));
+            if(!m_LoadingProject)
+                OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Npc));
         }
 
         private static void Locations_OnLocationRemoved(object sender, OnLocationAddedRemovedArgs e)
         {
-            OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Location));
+            if (!m_LoadingProject)
+                OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Location));
         }
 
         private static void Locations_OnLocationAdded(object sender, OnLocationAddedRemovedArgs e)
         {
-            OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Location));
+            if (!m_LoadingProject)
+                OnProjectDataChanged?.Invoke(sender, new OnProjectChangedEventArgs(OnProjectChangedEventArgs.ProjectChangedDataTypes.Location));
         }
     }
 }

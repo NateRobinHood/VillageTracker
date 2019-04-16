@@ -30,6 +30,9 @@ namespace VillageTracker.Components
             this.MouseUp += CroppingPictureBox_MouseUp;
             this.MouseMove += CroppingPictureBox_MouseMove;
             this.MouseLeave += CroppingPictureBox_MouseLeave;
+
+            this.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Resize += CroppingPictureBox_Resize;
         }
 
         public CroppingPictureBox(int croppingWidth = 750, int croppingHeight = 120) : base()
@@ -125,6 +128,10 @@ namespace VillageTracker.Components
             m_isPanning = true;
             m_PanStartPosition = new Point(e.X, e.Y);
             m_PanMoveOriginalPosition = m_CroppingLocation;
+        }
+
+        private void CroppingPictureBox_Resize(object sender, EventArgs e)
+        {
         }
     }
 }

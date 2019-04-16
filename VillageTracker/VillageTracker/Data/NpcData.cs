@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace VillageTracker.Data
 {
@@ -264,44 +266,89 @@ namespace VillageTracker.Data
             }
         }
 
-        public string NpcImagePath
+        //public string NpcImagePath
+        //{
+        //    get
+        //    {
+        //        return m_NpcImagePath;
+        //    }
+        //    set
+        //    {
+        //        if (m_NpcImagePath != value)
+        //        {
+        //            m_NpcImagePath = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+
+        [XmlIgnore]
+        public bool HasNpcImage
         {
             get
             {
-                return m_NpcImagePath;
+                return (m_NpcImage != null);
+            }
+        }
+
+        [XmlIgnore]
+        public Image NpcImage
+        {
+            get
+            {
+                return m_NpcImage;
             }
             set
             {
-                if (m_NpcImagePath != value)
+                if (m_NpcImage != value)
                 {
-                    m_NpcImagePath = value;
+                    m_NpcImage = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public bool HasNpcImage
+        [Browsable(false)]
+        [XmlElement("NpcImage")]
+        public byte[] NpcImageSerialized
         {
             get
             {
-                return File.Exists(m_NpcImagePath);
+                if (!HasNpcImage)
+                    return null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    NpcImage.Save(ms, ImageFormat.Bmp);
+                    return ms.ToArray();
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    NpcImage = null;
+                }
+                else
+                {
+                    using (MemoryStream ms = new MemoryStream(value))
+                    {
+                        NpcImage = new Bitmap(ms);
+                    }
+                }
             }
         }
 
-        public Image NpcImage
+        //Public Methods
+        public bool SetNpcImage(string imagePath)
         {
-            get
+            if (File.Exists(imagePath))
             {
-                if (HasNpcImage)
-                {
-                    if (m_NpcImage == null)
-                    {
-                        m_NpcImage = Image.FromFile(m_NpcImagePath);
-                    }
-
-                    return m_NpcImage;
-                }
-                return null;
+                NpcImage = Image.FromFile(imagePath);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

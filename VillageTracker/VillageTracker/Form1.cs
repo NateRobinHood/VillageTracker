@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,34 @@ namespace VillageTracker
             if (selectedTabPage != null)
             {
                 villageTitleUserControl.VillageBanner = selectedTabPage.LocationData.BannerImage;
+            }
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProjectData.SaveProjectData();
+        }
+
+        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog OFD = new OpenFileDialog())
+            {
+                OFD.Filter = "vtp files (*.vtp)|*.vtp";
+                OFD.RestoreDirectory = true;
+                OFD.Multiselect = false;
+
+                if (OFD.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(OFD.FileName))
+                    {
+                        ProjectData.OpenProjectData(OFD.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Project file {0} not found", OFD.FileName));
+                        return;
+                    }
+                }
             }
         }
     }

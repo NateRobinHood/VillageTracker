@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace VillageTracker.Data
 {
@@ -33,6 +36,16 @@ namespace VillageTracker.Data
             }
         }
 
+        [XmlIgnore]
+        public bool HasBannerImage
+        {
+            get
+            {
+                return (m_BannerImage != null);
+            }
+        }
+
+        [XmlIgnore]
         public Image BannerImage
         {
             get
@@ -42,6 +55,36 @@ namespace VillageTracker.Data
             set
             {
                 m_BannerImage = value;
+            }
+        }
+
+        [Browsable(false)]
+        [XmlElement("BannerImage")]
+        public byte[] BannerImageSerialized
+        {
+            get
+            {
+                if (!HasBannerImage)
+                    return null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    BannerImage.Save(ms, ImageFormat.Bmp);
+                    return ms.ToArray();
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    BannerImage = null;
+                }
+                else
+                {
+                    using (MemoryStream ms = new MemoryStream(value))
+                    {
+                        BannerImage = new Bitmap(ms);
+                    }
+                }
             }
         }
     }
