@@ -62,7 +62,7 @@
             this.listViewCharacters.Size = new System.Drawing.Size(260, 410);
             this.listViewCharacters.TabIndex = 2;
             this.listViewCharacters.UseCompatibleStateImageBehavior = false;
-            this.listViewCharacters.View = System.Windows.Forms.View.List;
+            this.listViewCharacters.View = System.Windows.Forms.View.Details;
             this.listViewCharacters.SelectedIndexChanged += new System.EventHandler(this.listViewCharacters_SelectedIndexChanged);
             // 
             // NpcList

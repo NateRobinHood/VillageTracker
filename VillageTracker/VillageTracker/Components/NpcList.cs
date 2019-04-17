@@ -21,6 +21,9 @@ namespace VillageTracker.Components
             InitializeComponent();
 
             listViewCharacters.MultiSelect = false;
+            listViewCharacters.FullRowSelect = true;
+            listViewCharacters.Columns.Add("Name", -2, HorizontalAlignment.Left);
+            listViewCharacters.Columns.Add("Race", -2, HorizontalAlignment.Left);
 
             ProjectData.OnProjectDataChanged += ProjectData_OnProjectDataChanged;
             ProjectData.OnProjectLoaded += ProjectData_OnProjectLoaded;
@@ -30,6 +33,7 @@ namespace VillageTracker.Components
         private void AddNpc(NpcData npc)
         {
             ListViewItem newNpcItem = new ListViewItem(npc.Name);
+            newNpcItem.SubItems.Add(npc.Race.GetEnumDescription());
             newNpcItem.Tag = npc;
             listViewCharacters.Items.Add(newNpcItem);
         }
