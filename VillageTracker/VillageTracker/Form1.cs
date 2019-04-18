@@ -22,6 +22,7 @@ namespace VillageTracker
 
             //Event Subscriptions
             ProjectData.OnProjectDataChanged += ProjectData_OnProjectDataChanged;
+            ProjectData.OnProjectLoaded += ProjectData_OnProjectLoaded;
             tabControlMain.SelectedIndexChanged += TabControlMain_SelectedIndexChanged;
 
             InitTabPages();
@@ -39,6 +40,26 @@ namespace VillageTracker
         }
 
         //Event Handlers
+        private void ProjectData_OnProjectLoaded(object sender, EventArgs e)
+        {
+            List<TabPage> tempList = new List<TabPage>(tabControlMain.TabPages.Cast<TabPage>()); //Avoid enumeration exception
+                                                                                                 //Removed Tabs that aren't in list
+            foreach (TabPage tab in tempList)
+            {
+                if (!ProjectData.Locations.Any(c => c.LocationName == tab.Text) && tab.Text != ProjectData.AllNpcsTabName)
+                {
+                    tabControlMain.TabPages.Remove(tab);
+                }
+            }
+            //Add Tabs that aren't in list
+            foreach (LocationData location in ProjectData.Locations)
+            {
+                if (!tabControlMain.TabPages.Cast<TabPage>().Any(c => c.Text == location.LocationName))
+                {
+                    tabControlMain.TabPages.Add(new LocationTabPage(location));
+                }
+            }
+        }
         private void ProjectData_OnProjectDataChanged(object sender, OnProjectChangedEventArgs e)
         {
             //Check Location Tabs

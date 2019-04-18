@@ -94,7 +94,7 @@ namespace VillageTracker.Data
                 using (XmlWriter xw = XmlWriter.Create(sw))
                 {
                     npcSerializer.Serialize(xw, m_Npcs);
-                    npcData.Add(XElement.Parse(xw.ToString()));
+                    npcData.Add(XDocument.Parse(sw.ToString()).Root);
                 }
             }
 
@@ -105,7 +105,7 @@ namespace VillageTracker.Data
                 using (XmlWriter xw = XmlWriter.Create(sw))
                 {
                     locationSerializer.Serialize(xw, m_Locations);
-                    locationData.Add(XElement.Parse(xw.ToString()));
+                    locationData.Add(XDocument.Parse(sw.ToString()).Root);
                 }
             }
 
@@ -123,7 +123,7 @@ namespace VillageTracker.Data
             XDocument projectDataXml = XDocument.Load(path);
 
             XElement rootElement = projectDataXml.Root;
-            if (rootElement != null && rootElement.Name.LocalName != XML_ROOT)
+            if (rootElement == null || rootElement.Name.LocalName != XML_ROOT)
             {
                 MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 m_LoadingProject = false;
@@ -131,7 +131,7 @@ namespace VillageTracker.Data
             }
 
             XElement npcData = rootElement.Element(XML_NPC_ELEMENT);
-            if (npcData != null)
+            if (npcData == null)
             {
                 MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 m_LoadingProject = false;
@@ -139,7 +139,7 @@ namespace VillageTracker.Data
             }
 
             XElement locationData = rootElement.Element(XML_LOCATION_ELEMENT);
-            if (npcData != null)
+            if (npcData == null)
             {
                 MessageBox.Show($"The file {path} is an invalid project file", "Invalid Project File", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 m_LoadingProject = false;
@@ -148,7 +148,7 @@ namespace VillageTracker.Data
 
             //Deserialize Npc Data
             XmlSerializer npcDataSerializer = new XmlSerializer(typeof(NpcList));
-            using (TextReader reader = new StringReader(npcData.Elements().First().ToString()))
+            using (TextReader reader = new StringReader(npcData.Element("ArrayOfNpcData").ToString()))
             {
                 try
                 {
@@ -164,11 +164,11 @@ namespace VillageTracker.Data
 
             //Deserialize Location Data
             XmlSerializer locationDataSerializer = new XmlSerializer(typeof(LocationList));
-            using (TextReader reader = new StringReader(locationData.Elements().First().ToString()))
+            using (TextReader reader = new StringReader(locationData.Element("ArrayOfLocationData").ToString()))
             {
                 try
                 { 
-                    m_Locations = (LocationList)npcDataSerializer.Deserialize(reader);
+                    m_Locations = (LocationList)locationDataSerializer.Deserialize(reader);
                 }
                 catch (Exception ex)
                 {

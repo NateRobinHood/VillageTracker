@@ -59,7 +59,7 @@ namespace VillageTracker.Data
         }
 
         [Browsable(false)]
-        [XmlElement("BannerImage")]
+        [XmlElement(ElementName = "BannerImage", DataType = "hexBinary")]
         public byte[] BannerImageSerialized
         {
             get
