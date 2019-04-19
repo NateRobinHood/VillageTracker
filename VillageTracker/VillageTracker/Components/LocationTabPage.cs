@@ -19,6 +19,7 @@ namespace VillageTracker.Components
         {
             m_Location = location;
             m_VillageUserControl = new VillageUserControl(location);
+            m_VillageUserControl.Dock = DockStyle.Fill;
             this.Controls.Add(VillageUserControl);
         }
 

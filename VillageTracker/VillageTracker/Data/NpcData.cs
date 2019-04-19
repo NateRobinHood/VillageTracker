@@ -330,10 +330,10 @@ namespace VillageTracker.Data
                 }
                 else
                 {
-                    using (MemoryStream ms = new MemoryStream(value))
-                    {
-                        NpcImage = new Bitmap(ms);
-                    }
+                    ImageConverter converted = new ImageConverter();
+                    Image convertedImage = (Image)converted.ConvertFrom(value);
+
+                    NpcImage = new Bitmap(convertedImage);
                 }
             }
         }

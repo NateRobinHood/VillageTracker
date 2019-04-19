@@ -13,6 +13,7 @@ namespace VillageTracker.Components
     {
         //Private Varibales
         private bool m_isPanning = false;
+        private bool m_IsScanningImage = false;
         private Point m_PanStartPosition = Point.Empty;
         private Point m_PanMovePosition = Point.Empty;
         private Point m_PanMoveOriginalPosition = Point.Empty;
@@ -50,18 +51,30 @@ namespace VillageTracker.Components
         {
             get
             {
+                m_IsScanningImage = true;
                 Rectangle cropRect = new Rectangle(m_CroppingLocation.X, m_CroppingLocation.Y, m_CroppingBounds.Width, m_CroppingBounds.Height);
-                Bitmap src = this.Image as Bitmap;
                 Bitmap croppedImage = new Bitmap(cropRect.Width, cropRect.Height);
-
-                using (Graphics g = Graphics.FromImage(croppedImage))
+                try
                 {
-                    g.DrawImage(src, new Rectangle(0, 0, croppedImage.Width, croppedImage.Height),
-                                     cropRect,
-                                     GraphicsUnit.Pixel);
+                    Bitmap src = new Bitmap(this.ClientRectangle.Width, this.ClientRectangle.Height);// = this.Image as Bitmap;
+                    this.DrawToBitmap(src, this.ClientRectangle);
+
+                    using (Graphics g = Graphics.FromImage(croppedImage))
+                    {
+                        g.DrawImage(src, new Rectangle(0, 0, croppedImage.Width, croppedImage.Height),
+                                         cropRect,
+                                         GraphicsUnit.Pixel);
+                    }
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    m_IsScanningImage = false;
                 }
 
-                return (Image)croppedImage;
+                return croppedImage;
             }
         }
 
@@ -93,7 +106,8 @@ namespace VillageTracker.Components
         {
             base.OnPaint(pe);
 
-            PaintCroppingOverlay(pe.Graphics);
+            if(!m_IsScanningImage)
+                PaintCroppingOverlay(pe.Graphics);
         }
 
         //Event Handlers

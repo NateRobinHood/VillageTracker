@@ -32,13 +32,13 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.villageUserControl1 = new VillageTracker.Components.VillageUserControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.villageTitleUserControl = new VillageTracker.Components.VillageTitleUserControl();
-            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1009, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(972, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,16 +69,30 @@
             // addLocationToolStripMenuItem
             // 
             this.addLocationToolStripMenuItem.Name = "addLocationToolStripMenuItem";
-            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addLocationToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addLocationToolStripMenuItem.Text = "Add Location";
             this.addLocationToolStripMenuItem.Click += new System.EventHandler(this.addLocationToolStripMenuItem_Click);
             // 
             // addNPCToolStripMenuItem
             // 
             this.addNPCToolStripMenuItem.Name = "addNPCToolStripMenuItem";
-            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addNPCToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addNPCToolStripMenuItem.Text = "Add NPC";
             this.addNPCToolStripMenuItem.Click += new System.EventHandler(this.addNPCToolStripMenuItem_Click);
+            // 
+            // saveProjectToolStripMenuItem
+            // 
+            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.saveProjectToolStripMenuItem.Text = "Save Project";
+            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            // 
+            // openProjectToolStripMenuItem
+            // 
+            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.openProjectToolStripMenuItem.Text = "Open Project";
+            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
             // 
             // tabControlMain
             // 
@@ -87,10 +101,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Controls.Add(this.tabPage2);
-            this.tabControlMain.Location = new System.Drawing.Point(2, 98);
+            this.tabControlMain.Location = new System.Drawing.Point(2, 111);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1007, 444);
+            this.tabControlMain.Size = new System.Drawing.Size(970, 408);
             this.tabControlMain.TabIndex = 2;
             // 
             // tabPage1
@@ -99,7 +113,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(999, 418);
+            this.tabPage1.Size = new System.Drawing.Size(962, 382);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -109,7 +123,7 @@
             this.villageUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.villageUserControl1.Location = new System.Drawing.Point(3, 3);
             this.villageUserControl1.Name = "villageUserControl1";
-            this.villageUserControl1.Size = new System.Drawing.Size(993, 412);
+            this.villageUserControl1.Size = new System.Drawing.Size(956, 376);
             this.villageUserControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -117,7 +131,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(999, 418);
+            this.tabPage2.Size = new System.Drawing.Size(999, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -126,33 +140,20 @@
             // 
             this.villageTitleUserControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.villageTitleUserControl.BackColor = System.Drawing.Color.White;
-            this.villageTitleUserControl.Location = new System.Drawing.Point(1, 26);
+            this.villageTitleUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(145)))), ((int)(((byte)(95)))));
+            this.villageTitleUserControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.villageTitleUserControl.Location = new System.Drawing.Point(0, 24);
             this.villageTitleUserControl.Name = "villageTitleUserControl";
-            this.villageTitleUserControl.Size = new System.Drawing.Size(1008, 88);
+            this.villageTitleUserControl.Size = new System.Drawing.Size(972, 88);
             this.villageTitleUserControl.TabIndex = 0;
             this.villageTitleUserControl.VillageBanner = null;
             this.villageTitleUserControl.VillageTitle = "Village Title";
-            // 
-            // saveProjectToolStripMenuItem
-            // 
-            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveProjectToolStripMenuItem.Text = "Save Project";
-            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
-            // 
-            // openProjectToolStripMenuItem
-            // 
-            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openProjectToolStripMenuItem.Text = "Open Project";
-            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 544);
+            this.ClientSize = new System.Drawing.Size(972, 521);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.villageTitleUserControl);
             this.Controls.Add(this.menuStrip1);

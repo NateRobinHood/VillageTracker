@@ -34,7 +34,9 @@ namespace VillageTracker
             tabControlMain.TabPages.Clear();
 
             TabPage allNpcsTabPage = new TabPage(ProjectData.AllNpcsTabName);
-            allNpcsTabPage.Controls.Add(new VillageUserControl());
+            VillageUserControl allNpcsVilageControl = new VillageUserControl();
+            allNpcsVilageControl.Dock = DockStyle.Fill;
+            allNpcsTabPage.Controls.Add(allNpcsVilageControl);
 
             tabControlMain.TabPages.Add(allNpcsTabPage);
         }
@@ -43,7 +45,7 @@ namespace VillageTracker
         private void ProjectData_OnProjectLoaded(object sender, EventArgs e)
         {
             List<TabPage> tempList = new List<TabPage>(tabControlMain.TabPages.Cast<TabPage>()); //Avoid enumeration exception
-                                                                                                 //Removed Tabs that aren't in list
+            //Removed Tabs that aren't in list
             foreach (TabPage tab in tempList)
             {
                 if (!ProjectData.Locations.Any(c => c.LocationName == tab.Text) && tab.Text != ProjectData.AllNpcsTabName)
@@ -115,6 +117,12 @@ namespace VillageTracker
             if (selectedTabPage != null)
             {
                 villageTitleUserControl.VillageBanner = selectedTabPage.LocationData.BannerImage;
+                villageTitleUserControl.VillageTitle = selectedTabPage.LocationData.LocationName;
+            }
+            else
+            {
+                villageTitleUserControl.VillageTitle = string.Empty;
+                villageTitleUserControl.VillageBanner = null;
             }
         }
 

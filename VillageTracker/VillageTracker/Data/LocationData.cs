@@ -80,10 +80,10 @@ namespace VillageTracker.Data
                 }
                 else
                 {
-                    using (MemoryStream ms = new MemoryStream(value))
-                    {
-                        BannerImage = new Bitmap(ms);
-                    }
+                    ImageConverter converted = new ImageConverter();
+                    Image convertedImage = (Image)converted.ConvertFrom(value);
+
+                    BannerImage = new Bitmap(convertedImage);
                 }
             }
         }

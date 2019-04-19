@@ -34,6 +34,7 @@
             // lblVillageTitle
             // 
             this.lblVillageTitle.AutoSize = true;
+            this.lblVillageTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblVillageTitle.Font = new System.Drawing.Font("Microsoft Uighur", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVillageTitle.Location = new System.Drawing.Point(12, 14);
             this.lblVillageTitle.Name = "lblVillageTitle";
@@ -45,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(145)))), ((int)(((byte)(95)))));
             this.Controls.Add(this.lblVillageTitle);
             this.Name = "VillageTitleUserControl";
             this.Size = new System.Drawing.Size(750, 120);

@@ -15,6 +15,10 @@ namespace VillageTracker.Components
         public VillageTitleUserControl()
         {
             InitializeComponent();
+
+            this.BackgroundImageLayout = ImageLayout.Center;
+            this.BackColor = ColorManager.WornPaperColor;
+            this.Padding = Padding.Empty;
         }
 
         //Public Properties
@@ -39,6 +43,7 @@ namespace VillageTracker.Components
             set
             {
                 this.BackgroundImage = value;
+                this.BackColor = ColorManager.WornPaperColor;
             }
         }
     }

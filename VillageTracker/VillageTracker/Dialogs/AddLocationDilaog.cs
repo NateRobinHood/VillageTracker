@@ -58,6 +58,7 @@ namespace VillageTracker.Dialogs
             {
                 if (IVBD.ShowDialog() == DialogResult.OK)
                 {
+                    IVBD.BannerImage.Save(@"C:\Git\VillageTracker\VillageTracker\VillageTracker\Resources\TestCroppedImage.bmp");
                     m_NewLocationData.BannerImage = IVBD.BannerImage;
                 }
             }
